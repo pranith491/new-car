@@ -1,0 +1,4 @@
+package com.example.project.dto;
+import jakarta.validation.constraints.*;
+public class RegisterRequest {@NotBlank @Size(max=100) private String name;@NotBlank @Email @Size(max=180) private String email;@NotBlank @Size(max=20) private String phone;@NotBlank @Size(min=8,max=100) private String password;
+public String getName(){return name;}public void setName(String v){name=v;}public String getEmail(){return email;}public void setEmail(String v){email=v;}public String getPhone(){return phone;}public void setPhone(String v){phone=v;}public String getPassword(){return password;}public void setPassword(String v){password=v;}}

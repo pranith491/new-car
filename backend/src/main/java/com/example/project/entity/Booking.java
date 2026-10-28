@@ -1,0 +1,7 @@
+package com.example.project.entity;
+import jakarta.persistence.*;import java.time.*;
+@Entity @Table(name="car_bookings") public class Booking {
+ @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id;
+ @Column(nullable=false) private String customerName;@Column(nullable=false) private String phone;@Column(nullable=false) private String carModel;private LocalDate bookingDate;@Column(length=1000) private String message;@Column(nullable=false) private String status="PENDING";@Column(nullable=false) private LocalDateTime createdAt=LocalDateTime.now();
+ public Long getId(){return id;}public String getCustomerName(){return customerName;}public void setCustomerName(String v){customerName=v;}public String getPhone(){return phone;}public void setPhone(String v){phone=v;}public String getCarModel(){return carModel;}public void setCarModel(String v){carModel=v;}public LocalDate getBookingDate(){return bookingDate;}public void setBookingDate(LocalDate v){bookingDate=v;}public String getMessage(){return message;}public void setMessage(String v){message=v;}public String getStatus(){return status;}public void setStatus(String v){status=v;}public LocalDateTime getCreatedAt(){return createdAt;}
+}

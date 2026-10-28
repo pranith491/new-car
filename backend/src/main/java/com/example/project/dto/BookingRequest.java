@@ -1,0 +1,4 @@
+package com.example.project.dto;
+import jakarta.validation.constraints.*;import java.time.LocalDate;
+public class BookingRequest {@NotBlank private String customerName;@NotBlank @Pattern(regexp="[0-9+() -]{8,18}") private String phone;@NotBlank private String carModel;private LocalDate bookingDate;private String message;
+public String getCustomerName(){return customerName;}public void setCustomerName(String v){customerName=v;}public String getPhone(){return phone;}public void setPhone(String v){phone=v;}public String getCarModel(){return carModel;}public void setCarModel(String v){carModel=v;}public LocalDate getBookingDate(){return bookingDate;}public void setBookingDate(LocalDate v){bookingDate=v;}public String getMessage(){return message;}public void setMessage(String v){message=v;}}

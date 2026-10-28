@@ -1,0 +1,5 @@
+document.addEventListener("DOMContentLoaded",()=>{
+ const reg=document.getElementById("register-form"), login=document.getElementById("login-form"), msg=document.getElementById("auth-message");
+ if(reg) reg.addEventListener("submit",async e=>{e.preventDefault();msg.textContent="Creating account…";const data=Object.fromEntries(new FormData(reg));try{const r=await apiRequest("/auth/register",{method:"POST",body:JSON.stringify(data)});msg.textContent=r.message||"Registration successful. Please login.";reg.reset()}catch(err){msg.textContent="Registration failed: "+err.message}});
+ if(login) login.addEventListener("submit",async e=>{e.preventDefault();msg.textContent="Checking login…";const data=Object.fromEntries(new FormData(login));try{const r=await apiRequest("/auth/login",{method:"POST",body:JSON.stringify(data)});msg.textContent=r.message||"Login successful"}catch(err){msg.textContent="Login failed: "+err.message}});
+});

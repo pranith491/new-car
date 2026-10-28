@@ -1,0 +1,3 @@
+package com.example.project.service;
+import com.example.project.dto.BookingRequest;import com.example.project.entity.Booking;import com.example.project.repository.BookingRepository;import org.springframework.stereotype.Service;import java.util.List;
+@Service public class BookingService {private final BookingRepository repo;public BookingService(BookingRepository r){repo=r;}public Booking create(BookingRequest r){Booking b=new Booking();b.setCustomerName(r.getCustomerName().trim());b.setPhone(r.getPhone().trim());b.setCarModel(r.getCarModel().trim());b.setBookingDate(r.getBookingDate());b.setMessage(r.getMessage());b.setStatus("PENDING");return repo.save(b);}public List<Booking> all(){return repo.findAll();}}

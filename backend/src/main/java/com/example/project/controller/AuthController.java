@@ -1,0 +1,3 @@
+package com.example.project.controller;
+import com.example.project.dto.*;import com.example.project.service.AuthService;import jakarta.validation.Valid;import org.springframework.http.HttpStatus;import org.springframework.web.bind.annotation.*;import java.util.Map;
+@RestController @RequestMapping("/api/auth") public class AuthController {private final AuthService service;public AuthController(AuthService s){service=s;}@PostMapping("/register") @ResponseStatus(HttpStatus.CREATED) public Map<String,Object> register(@Valid @RequestBody RegisterRequest r){return service.register(r);}@PostMapping("/login") public Map<String,Object> login(@Valid @RequestBody LoginRequest r){return service.login(r);}}

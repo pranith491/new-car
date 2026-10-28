@@ -1,0 +1,7 @@
+document.addEventListener("DOMContentLoaded",()=>{
+ const y=document.getElementById("year");if(y)y.textContent=new Date().getFullYear();
+ const menu=document.getElementById("menu"),nav=document.getElementById("nav");if(menu&&nav)menu.addEventListener("click",()=>nav.classList.toggle("open"));
+ document.querySelectorAll(".book").forEach(b=>b.addEventListener("click",()=>{const s=document.querySelector('#booking select[name="carModel"]');if(s)s.value=b.dataset.model;document.getElementById("booking")?.scrollIntoView({behavior:"smooth"})}));
+ const form=document.getElementById("booking");if(form)form.addEventListener("submit",async e=>{e.preventDefault();const msg=document.getElementById("booking-message");const data=Object.fromEntries(new FormData(form));msg.textContent="Sending booking request…";try{const r=await apiRequest("/bookings",{method:"POST",body:JSON.stringify(data)});msg.textContent=`Thank you! Enquiry #${r.id} saved.`;form.reset()}catch(err){msg.textContent="Could not save booking. Start backend and check MySQL. "+err.message}});
+ const contact=document.getElementById("contact-form");if(contact)contact.addEventListener("submit",e=>{e.preventDefault();document.getElementById("contact-message").textContent="Contact endpoint is not configured yet. Use the booking enquiry form for now."});
+});
